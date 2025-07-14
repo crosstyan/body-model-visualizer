@@ -1,6 +1,15 @@
 # Body Model Visualizer
 
-### Introduction
+## Note
+
+to install [`chumpy`](https://pypi.org/project/chumpy/)
+
+```bash
+uv pip install pip setuptools
+uv sync
+```
+
+## Introduction
 
 This is a simple Open3D-based GUI for SMPL-family body models. This GUI lets you
 play with the shape, expression, and pose parameters of SMPL, SMPL-X, MANO, FLAME

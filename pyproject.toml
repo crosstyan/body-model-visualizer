@@ -1,21 +1,42 @@
 [project]
 name = "body-model-visualizer"
 version = "0.1.0"
-description = "Add your description here"
+description = "SMPL body visualizer"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "chumpy==0.70",
-    "ipdb==0.13.9",
-    "joblib==1.1.0",
-    "loguru==0.5.3",
+    "ipdb==0.13.13",
+    "joblib==1.5.1",
+    "loguru==0.7.3",
     "matplotlib==3.5.1",
-    "numpy==1.21.5",
+    "numpy>=1.21,<1.23",
     "open3d==0.14.1",
     "scipy==1.7.3",
     "smplx==0.1.28",
-    "torch==1.10.1",
-    "tqdm==4.62.3",
+    "torch>=2.7.1",
+    "tqdm>=4.67.1",
 ]
-[tool.uv.pip]
+
+[tool.uv]
 no-build-isolation-package = ["chumpy"]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu", marker = "sys_platform != 'linux'" },
+  { index = "pytorch-cu128", marker = "sys_platform == 'linux'" },
+]
+torchvision = [
+  { index = "pytorch-cpu", marker = "sys_platform != 'linux'" },
+  { index = "pytorch-cu128", marker = "sys_platform == 'linux'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
